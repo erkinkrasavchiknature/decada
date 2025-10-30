@@ -1,0 +1,228 @@
+/* Fonts already loaded in pages; fallback */
+:root{
+  --bg1: #fdf6e3;
+  --bg2: #f1e3c3;
+  --card: #fffdf5;
+  --accent: #8a5b2f;
+  --accent-dark: #7b4f27;
+  --muted: #5a4632;
+}
+
+*{box-sizing:border-box}
+
+/* =========================
+   ✅ ТҮЗЕТУ 1: BODY
+   ========================= */
+html{height:100%}
+body{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* 100% орнына 100vh (viewport height) */
+  margin:0;
+  font-family:"Noto Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:#2e2a24;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+/* ========================= */
+
+.container{
+  width: min(1200px, 94%);
+  margin: 0 auto;
+}
+
+/* Header */
+.site-header{
+  background: linear-gradient(90deg,var(--accent-dark), #a26d3c);
+  color: #fff;
+  padding: 18px 0;
+}
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+.site-title{
+  margin:0;
+  font-family:"Noto Serif", serif;
+  font-weight:700;
+  font-size:1.6rem;
+}
+.main-nav a{
+  color:#fff;
+  text-decoration:none;
+  margin-left:14px;
+  font-weight:600;
+}
+.back-link{
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* Hero */
+.hero{
+  padding: 30px 0;
+  text-align:center;
+}
+.hero h2{font-size:2rem; color:var(--accent-dark); margin:0 0 8px}
+.hero p{color:var(--muted); margin:0; font-size:1.05rem}
+
+/* Cards grid (index) */
+.cards-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+  margin: 30px 0 50px;
+}
+.card{
+  background: var(--card);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+  transition: transform .28s ease, box-shadow .28s ease, background2s ease;
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  min-height: 220px;
+}
+.card h3{margin:0; font-size:1.4rem; color:var(--accent-dark)}
+.card p{margin:0; color:var(--muted); line-height:1.5; font-size:1.05rem}
+.btn{
+  margin-top:auto;
+  align-self:flex-start;
+  text-decoration:none;
+  padding:10px 18px;
+  background:var(--accent);
+  color:#fff;
+  border-radius:10px;
+  font-weight:600;
+}
+.card:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 18px 36px rgba(0,0,0,0.12);
+  background: #fff7ea;
+}
+
+/* About / Contact */
+.about, .contact{padding:28px 0; color:var(--muted)}
+
+/* Two-column layout for story pages */
+.two-column{
+  display:grid;
+  grid-template-columns: 1fr 340px;
+  gap: 28px;
+  align-items:start;
+  padding: 36px 0 80px;
+}
+
+/* Story content (left) */
+.story-content{
+  background:var(--card);
+  padding:26px;
+  border-radius:16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+}
+.story-content h2{margin-top:0; color:var(--accent-dark); font-size:2rem}
+.story-content p{color:var(--muted); line-height:1.6; font-size:1.05rem}
+.story-content .btn{display:inline-block; margin-top:18px}
+
+/* Sidebar (right) */
+.sidebar{
+  position:relative;
+}
+.sidebar h3{margin:0 0 10px; color:var(--accent-dark)}
+.side-cards{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.side-card{
+  display:block;
+  background:#fff9f2;
+  padding:12px 14px;
+  border-radius:12px;
+  text-decoration:none;
+  color:#2e2a24;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+  transition: transform .18s ease, background .15s ease;
+}
+.side-card strong{display:block; color:var(--accent-dark); font-size:1rem}
+.side-card span{display:block; color:var(--muted); font-size:0.92rem; margin-top:6px}
+.side-card:hover{transform: translateX(6px); background:#fff6e8}
+
+/* =========================
+   ✅ ТҮЗЕТУ 2: FOOTER
+   ========================= */
+.site-footer{
+  background:var(--accent-dark); 
+  color:#fff; 
+  padding:22px 0; 
+  margin-top: auto; /* 'auto' осы жерде footer-ді төменге итереді */
+  text-align:center;
+}
+/* ========================= */
+
+/* Responsive: мобильді көрініс */
+@media (max-width: 900px){
+  .two-column{
+    grid-template-columns: 1fr;
+  }
+  .sidebar{order:2}
+  .story-content{order:1}
+  .header-inner{flex-direction:column; gap:8px; align-items:center}
+  .site-title{font-size:1.4rem}
+  .cards-grid{grid-template-columns: 1fr; gap:20px}
+  .card{min-height: 180px}
+}
+/* 🌙 Түнгі режим стилі */
+body.dark {
+  background: linear-gradient(180deg, #2b2b2b, #1f1f1f);
+  color: #f0e8d9;
+}
+body.dark .card {
+  background: #2e2e2e;
+  color: #f7f2e7;
+  box-shadow: 0 8px 18px rgba(255,255,255,0.1);
+}
+body.dark .card a {
+  background: #a46d3a;
+}
+body.dark header, body.dark footer {
+  background: #3a2c1a;
+}
+
+/* Түнгі режим батырмасы */
+.theme-toggle {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #8a5b2f;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+}
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* 📱 Телефондағы мәзір */
+.menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: #8a5b2f;
+  cursor: pointer;
+}
+@media (max-width: 800px) {
+  .menu-btn { display: block; }
+}
